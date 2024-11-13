@@ -15,9 +15,7 @@ module "bucket_name" {
   context = module.this.context
 }
 
-data "aws_elb_service_account" "default" {
-  count = module.this.enabled ? 1 : 0
-}
+data "aws_caller_identity" "default" {}
 
 data "aws_iam_policy_document" "default" {
   count = module.this.enabled ? 1 : 0
@@ -26,7 +24,7 @@ data "aws_iam_policy_document" "default" {
     sid = ""
     principals {
       type        = "AWS"
-      identifiers = [join("", data.aws_elb_service_account.default[*].arn)]
+      identifiers = ["${data.aws_caller_identity.default.account_id}:root"]
     }
     effect = "Allow"
     actions = [
