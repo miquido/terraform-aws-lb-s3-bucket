@@ -23,8 +23,8 @@ data "aws_iam_policy_document" "default" {
   statement {
     sid = ""
     principals {
-      type        = "AWS"
-      identifiers = ["arn:aws:iam::156460612806:root"]
+      type        = "Service"
+      identifiers = ["logdelivery.elasticloadbalancing.amazonaws.com"]
     }
     effect = "Allow"
     actions = [
