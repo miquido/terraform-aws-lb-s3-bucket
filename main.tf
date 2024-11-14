@@ -24,7 +24,7 @@ data "aws_iam_policy_document" "default" {
     sid = ""
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:sts::${data.aws_caller_identity.default.account_id}:federated-user/root"]
+      identifiers = ["arn:aws:iam::156460612806:root"]
     }
     effect = "Allow"
     actions = [
